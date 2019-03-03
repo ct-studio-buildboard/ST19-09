@@ -1,1 +1,33 @@
-
+company:
+  name: Contentor
+  logo: Contentor.png
+product_narrative: |
+  Contentor creates better ads, blogs, newsletters and social media content helping businesses 
+  reduce marketing costs & increase conversions.
+team:
+  picture: Contentor.png
+  roster:
+  - name: Nikhil Kejriwal
+    email: nk627@cornell.edu
+    picture: Nikhil.jpg
+    program: MBA
+  - name: Daren Liu
+    email: drl232@cornell.edu
+    picture: Daren.jpg
+    program: HT
+  - name: Advika Nigam
+    email: an556@cornell.edu
+    picture: Advika.png
+    program: CM
+  - name: Hathaitorn (Mew) Rojnirun
+    email: hr346@cornell.edu
+    picture: Mew.png
+    program: HT
+  - name: Anil Vadali
+    email: arv42@cornell.edu
+    picture: Anil.png
+    program: CS
+    
+assets:
+- title: Sprint 1
+  url: https://docs.google.com/presentation/d/1Qiytr7aQ7KGVcTyRWVk2WMbhfmItDMqLyNX6WjN3yGg/edit?usp=sharing
