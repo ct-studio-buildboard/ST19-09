@@ -39,7 +39,7 @@
 
             <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
-
+            <input id="keywords" hidden value={{keywords | tojson}}/>
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <img src="../static/img/white_pen.png" style="width:38px;  height:40px; margin-left: 30px; float: left">
@@ -70,7 +70,7 @@
                     <li class="active">
                         <a href="generate">
                             <i class="pe-7s-news-paper"></i>
-                            <p>Content Generator</p>
+                            <p>Create Campaign</p>
                         </a>
                     </li>
                     <!-- <li>
@@ -238,11 +238,11 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control" id="generate-1" placeholder="Generated Sentence 1"
-                                                            value="This is generated sentence 1">
+                                                        <input type="text" class="form-control" id="generate-1" placeholder={{suggestion | tojson}}
+                                                            value={{suggestion | tojson}}>
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <td>
                                                         <div class="radio">
                                                             <input id="checkbox2" type="radio">
@@ -264,7 +264,7 @@
                                                     <td><input type="text" class="form-control" id="generate-3" placeholder="Generated Sentence 3"
                                                             value="This is generated sentence 3">
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>

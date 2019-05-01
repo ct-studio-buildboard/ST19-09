@@ -59,7 +59,6 @@ let search = function (opts) {
 
 // Create image wrapper component
 let renderImageComponent = function (image, minHeightCSS) {
-    console.log(image.assets);
     if (!image || !image.assets || !image.assets.large_thumb || !image.assets.large_thumb.url) return;
 
     let wrapper = $('<td>');
@@ -83,12 +82,18 @@ let renderImageComponent = function (image, minHeightCSS) {
 
 $(function () {
 
-    let keywords = localStorage.getItem('keywords');
+    // let keywords = localStorage.getItem('keywords');
+    // let keywords = $('#keywords').val();
+    let keywords = "query=" + $('#keywords').val().replace(/[, ]+/g, "%20") + "&";
+    console.log(keywords);
     search(keywords);
 
     let item1 = document.getElementById('checkbox1');
-    let item2 = document.getElementById('checkbox2');
-    let item3 = document.getElementById('checkbox3');
+    // let item2 = document.getElementById('checkbox2');
+    // let item3 = document.getElementById('checkbox3');
+
+    let suggestion1 = document.getElementById("generate-1").value;
+    let suggestion2 = suggestion1;
 
     let pic1 = document.getElementById('checkbox4');
     let pic2 = document.getElementById('checkbox5');
@@ -107,17 +112,17 @@ $(function () {
         request
     }
 
-    item2.onclick = () => {
-        item2.checked = true;
-        item1.checked = false;
-        item3.checked = false;
-    }
+    // item2.onclick = () => {
+    //     item2.checked = true;
+    //     item1.checked = false;
+    //     item3.checked = false;
+    // }
 
-    item3.onclick = () => {
-        item3.checked = true;
-        item1.checked = false;
-        item2.checked = false;
-    }
+    // item3.onclick = () => {
+    //     item3.checked = true;
+    //     item1.checked = false;
+    //     item2.checked = false;
+    // }
 
     pic1.onclick = () => {
         pic1.checked = true;
@@ -149,15 +154,17 @@ $(function () {
 
 
     checkbox1.checked = true;
-    document.getElementById("generate-1").value = "The perfect dress for the perfect fit!";
-    document.getElementById("generate-2").value = "The new collection is here. Shop women's new arrivals!";
-    document.getElementById("generate-3").value = "It's gala time! Shop new dress collection!";
+    // document.getElementById("generate-1").value = "The perfect dress for the perfect fit!";
+    // document.getElementById("generate-2").value = "The new collection is here. Shop women's new arrivals!";
+    // document.getElementById("generate-3").value = "It's gala time! Shop new dress collection!";
 
     checkbox1.onclick = () => {
         console.log("Checkbox 1 has been clicked");
-        document.getElementById("generate-1").value = "The perfect dress for the perfect fit!";
-        document.getElementById("generate-2").value = "The new collection is here. Shop women's new arrivals!";
-        document.getElementById("generate-3").value = "It's gala time! Shop new dress collection!";
+        suggestion2 = document.getElementById("generate-1").value;
+        document.getElementById("generate-1").value = suggestion1;
+        // document.getElementById("generate-1").value = "The perfect dress for the perfect fit!";
+        // document.getElementById("generate-2").value = "The new collection is here. Shop women's new arrivals!";
+        // document.getElementById("generate-3").value = "It's gala time! Shop new dress collection!";
         checkbox1.setAttribute("checked", "true");
         checkbox2.checked = false;
         checkbox3.checked = false;
@@ -165,9 +172,11 @@ $(function () {
 
     checkbox2.onclick = () => {
         console.log("Checkbox 2 has been clicked");
-        document.getElementById("generate-1").value = "Feeling beautiful today? Check our new collection!";
-        document.getElementById("generate-2").value = "It's GALA TIME!";
-        document.getElementById("generate-3").value = "A look you need to wear for the gala!";
+        suggestion1 = document.getElementById("generate-1").value;
+        document.getElementById("generate-1").value = suggestion2;
+        // document.getElementById("generate-1").value = "Feeling beautiful today? Check our new collection!";
+        // document.getElementById("generate-2").value = "It's GALA TIME!";
+        // document.getElementById("generate-3").value = "A look you need to wear for the gala!";
         checkbox1.checked = false;
         checkbox2.setAttribute("checked", "true");
         checkbox3.checked = false;
@@ -176,8 +185,8 @@ $(function () {
     checkbox3.onclick = () => {
         console.log("Checkbox 3 has been clicked");
         document.getElementById("generate-1").value = "Checkbox 3 has been selected";
-        document.getElementById("generate-2").value = "Checkbox 3 has been selected";
-        document.getElementById("generate-3").value = "Checkbox 3 has been selected";
+        // document.getElementById("generate-2").value = "Checkbox 3 has been selected";
+        // document.getElementById("generate-3").value = "Checkbox 3 has been selected";
         checkbox1.checked = false;
         checkbox2.checked = false;
         checkbox3.setAttribute("checked", "true");

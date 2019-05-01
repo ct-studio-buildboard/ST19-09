@@ -1,7 +1,11 @@
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, redirect, url_for
+from flask_cors import CORS, cross_origin
 
 from app import app
-from app.models import test, food
+from app.models import predict
+
+# cors = CORS(app)
+# app.config['CORS_HEADERS'] = "Content-Type"
 
 @app.route('/')
 def index():
@@ -15,10 +19,6 @@ def dashboard():
 def generate():
     return render_template("generate.html")
 
-@app.route('/result')
-def result():
-    return render_template("result.html")
-
 @app.route('/complete')
 def complete():
 	return render_template("complete.html")
@@ -27,12 +27,30 @@ def complete():
 def test_api():
 	return render_template("test.html")
 
-@app.route('/test_inputs', methods=['POST'])
-def test_inputs():
-    items = request.get_json('items')['items']
-    return jsonify({'status': 'OK', 'text': 'It works', 'items': items})
+# @app.route('/test_inputs', methods=['POST'])
+# def test_inputs():
+#     keywords = request.get_json('keywords')['keywords']
+#     print(keywords)
+#     suggestion = predict.generate(keywords)
+#     print(suggestion)
+#     return redirect(url_for('result', keywords=keywords, suggestion=suggestion), code=307)
 
-@app.route('/test_user', methods=['POST'])
-def signUpUser():
-    user =  request.form['my_name']
-    return jsonify({'status':'OK', 'user':user, 'test':test.check_test(), 'food': food.check_food()});
+@app.route('/result', methods=['POST'])
+def test_inputs():
+    keywords = request.form['keyword']
+    print(keywords)
+    suggestion = predict.generate(keywords)
+    print(suggestion)
+    return render_template("result.html", keywords=keywords, suggestion=suggestion)
+
+## Not working for some reason
+# @app.route('/result', methods=['POST'])
+# def suggest_result():
+#     keywords = request.get_json('keywords')['keywords']
+#     print(keywords)
+#     suggestion = predict.generate(keywords)
+#     return render_template("result.html", suggestion=suggestion, keywords=keywords)
+
+# @app.route('/result', methods=['POST'])
+# def result():
+#     return render_template("result.html", suggestion=request.args.get("suggestion"), keywords=request.args.get("keywords"))
