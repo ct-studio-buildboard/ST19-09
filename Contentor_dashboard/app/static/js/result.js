@@ -85,7 +85,6 @@ $(function () {
     // let keywords = localStorage.getItem('keywords');
     // let keywords = $('#keywords').val();
     let keywords = "query=" + $('#keywords').val().replace(/[, ]+/g, "%20") + "&";
-    console.log(keywords);
     search(keywords);
 
     let item1 = document.getElementById('checkbox1');
@@ -93,6 +92,13 @@ $(function () {
     // let item3 = document.getElementById('checkbox3');
 
     let suggestion1 = document.getElementById("generate-1").value;
+    // if(suggestion1.includes("[END]")){
+    //     console.log("the end is here");
+    //     suggestion1 -= "[END]";
+    // }
+    // else{
+    //     console.log(suggestion1);
+    // }
     let suggestion2 = suggestion1;
 
     let pic1 = document.getElementById('checkbox4');
@@ -108,8 +114,6 @@ $(function () {
         item1.checked = true;
         item2.checked = false;
         item3.checked = false;
-
-        request
     }
 
     // item2.onclick = () => {
