@@ -21,7 +21,7 @@ let encodeAuthorization = function () {
 // Search media by type
 let search = function (opts) {
     let mediaType = 'image';
-    let $container = $('#' + mediaType + '-search-results');
+    let $container = $('#' + mediaType  + '-search-results');
 
     authorization = encodeAuthorization();
     if (!authorization) return;
@@ -89,11 +89,14 @@ $(function () {
     search(keywords);
 
     let item1 = document.getElementById('checkbox1');
-    // let item2 = document.getElementById('checkbox2');
-    // let item3 = document.getElementById('checkbox3');
-
-    let suggestion1 = document.getElementById("generate-1").value;
-    let suggestion2 = suggestion1;
+    let item2 = document.getElementById('checkbox2');
+    let item3 = document.getElementById('checkbox3');
+    let facebook1 = document.getElementById("generate-1").value;
+    let facebook2 = document.getElementById("generate-2").value;
+    let facebook3 = document.getElementById("generate-3").value;
+    let twitter1 = facebook1;
+    let twitter2 = facebook2;
+    let twitter3 = facebook3;
 
     let pic1 = document.getElementById('checkbox4');
     let pic2 = document.getElementById('checkbox5');
@@ -103,13 +106,16 @@ $(function () {
     let checkbox1 = document.getElementById('checkbox-1');
     let checkbox2 = document.getElementById('checkbox-2');
     let checkbox3 = document.getElementById('checkbox-3');
+    
+    // let suggestions = document.getElementById("suggestions");
+    var test = $('#suggestions').data('locations');
+    console.log(test);
+    $('#suggestions').append('<p>'+test[0]+'</p>')
 
     item1.onclick = () => {
         item1.checked = true;
         item2.checked = false;
         item3.checked = false;
-
-        request
     }
 
     // item2.onclick = () => {
@@ -160,8 +166,12 @@ $(function () {
 
     checkbox1.onclick = () => {
         console.log("Checkbox 1 has been clicked");
-        suggestion2 = document.getElementById("generate-1").value;
-        document.getElementById("generate-1").value = suggestion1;
+        twitter1 = document.getElementById("generate-1").value;
+        twitter2 = document.getElementById("generate-2").value;
+        twitter3 = document.getElementById("generate-3").value;
+        document.getElementById("generate-1").value = facebook1;
+        document.getElementById("generate-2").value = facebook2;
+        document.getElementById("generate-3").value = facebook3;
         // document.getElementById("generate-1").value = "The perfect dress for the perfect fit!";
         // document.getElementById("generate-2").value = "The new collection is here. Shop women's new arrivals!";
         // document.getElementById("generate-3").value = "It's gala time! Shop new dress collection!";
@@ -172,8 +182,12 @@ $(function () {
 
     checkbox2.onclick = () => {
         console.log("Checkbox 2 has been clicked");
-        suggestion1 = document.getElementById("generate-1").value;
-        document.getElementById("generate-1").value = suggestion2;
+        facebook1 = document.getElementById("generate-1").value;
+        facebook2 = document.getElementById("generate-2").value;
+        facebook3 = document.getElementById("generate-3").value;
+        document.getElementById("generate-1").value = twitter1;
+        document.getElementById("generate-2").value = twitter2;
+        document.getElementById("generate-3").value = twitter3;
         // document.getElementById("generate-1").value = "Feeling beautiful today? Check our new collection!";
         // document.getElementById("generate-2").value = "It's GALA TIME!";
         // document.getElementById("generate-3").value = "A look you need to wear for the gala!";
@@ -184,7 +198,7 @@ $(function () {
 
     checkbox3.onclick = () => {
         console.log("Checkbox 3 has been clicked");
-        document.getElementById("generate-1").value = "Checkbox 3 has been selected";
+        // document.getElementById("generate-1").value = "Checkbox 3 has been selected";
         // document.getElementById("generate-2").value = "Checkbox 3 has been selected";
         // document.getElementById("generate-3").value = "Checkbox 3 has been selected";
         checkbox1.checked = false;

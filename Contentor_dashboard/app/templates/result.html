@@ -227,6 +227,7 @@
                                 </div>
 
                                 <div class="content">
+                                    <div id="suggestions" data-locations='["one", "two"]'></div>
                                     <div class="table-full-width">
                                         <table class="table">
                                             <tbody>
@@ -238,11 +239,11 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control" id="generate-1" placeholder={{suggestion | tojson}}
-                                                            value={{suggestion | tojson}}>
+                                                        <input type="text" class="form-control" id="generate-1" placeholder={{suggestion[0] | tojson}}
+                                                            value={{suggestion[0] | tojson}}>
                                                     </td>
                                                 </tr>
-                                                <!-- <tr>
+                                                <tr>
                                                     <td>
                                                         <div class="radio">
                                                             <input id="checkbox2" type="radio">
@@ -250,8 +251,8 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control" id="generate-2" placeholder="Generated Sentence 1"
-                                                            value="This is generated sentence 2">
+                                                        <input type="text" class="form-control" id="generate-2" placeholder={{suggestion[1] | tojson}}
+                                                            value={{suggestion[1] | tojson}}>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -261,10 +262,10 @@
                                                             <label for="checkbox3"></label>
                                                         </div>
                                                     </td>
-                                                    <td><input type="text" class="form-control" id="generate-3" placeholder="Generated Sentence 3"
-                                                            value="This is generated sentence 3">
+                                                    <td><input type="text" class="form-control" id="generate-3" placeholder={{suggestion[2] | tojson}}
+                                                            value={{suggestion[2] | tojson}}>
                                                     </td>
-                                                </tr> -->
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

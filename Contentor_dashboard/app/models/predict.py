@@ -5,6 +5,19 @@ import pickle
 instance = MLModel()
 decoder_model = instance.decoder_model
 glove_model = instance.glove_model
+
+import tweepy as tp
+import re
+
+consumer_key = "Qni3V9KJP1HTwNLsiJGMjousn"
+consumer_secret = "7s065I0sueu3z48vKmlQwC2gueVib5EoWx3tUHGbU8r3qJmzpC"
+access_token = "3785833888-azkc4AWc1jSrTthqBj2T9CSYlvd7RzzLkYRHTHP"
+access_secret = "cEYlHtZqeHLdnU6W69g5nka7qH16QaefVUjc6fzqQnJKL"
+
+auth = tp.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_secret)
+api = tp.API(auth, wait_on_rate_limit=True)
+
 # import os
 # print(os.path.dirname(os.path.abspath(__file__)))
 with open("models/int_to_word.pickle", "rb") as a:
@@ -14,8 +27,21 @@ with open("models/word_to_int.pickle", "rb") as b:
     word_to_int = pickle.load(b)
 
 def generate(keywords):
+
+    tweet_count = 0
+    tweets = []
+    for status in tp.Cursor(api.search, q=keywords, lang='en', id='16929349').items():
+        if tweet_count > 1:
+            print("Completed Tweet Retrieval")
+            break
+        if status.text.startswith("@") == False and status.text.startswith("RT") == False:
+            tweet = re.sub(r'https.*', '', status.text).replace("\n", " ").strip()
+            tweet_count += 1
+            tweets.append(tweet)
     keywords = keywords.split(",")
-    return decode_sequence(keywords)
+    tweets.append(decode_sequence(keywords))
+    print(tweets)
+    return tweets
 
 def decode_sequence(input_seq):
     # Encode the input as state vectors.
