@@ -1,8 +1,12 @@
+from flask import Flask
+
+# Initialize the app
+application = Flask(__name__, instance_relative_config=True)
+
 from flask import render_template, request, jsonify, redirect, url_for
 from flask_cors import CORS, cross_origin
 
-import application
-from models import predict
+from .models import predict
 
 # cors = CORS(app)
 # app.config['CORS_HEADERS'] = "Content-Type"
@@ -54,3 +58,12 @@ def test_inputs():
 # @app.route('/result', methods=['POST'])
 # def result():
 #     return render_template("result.html", suggestion=request.args.get("suggestion"), keywords=request.args.get("keywords"))
+
+# Load the views
+# from app import views
+
+# Load the config file
+application.config.from_object('config')
+
+if __name__ == '__main__':
+    application.run(host='0.0.0.0')
