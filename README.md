@@ -5,7 +5,7 @@ If you want to run the machine learning model, you can access the CLeaned_ML_Mod
 To run the flask app, go into the Contentor_dashboard/app folder, and install all of the requirements from requirements.txt. You must also set the FLASK_APP environment variable to application.py. Afterwards, you can call "flask run" and the application will run. On Mac, the command is "export FLASK_APP=application.py" and for Windows, it is "set FLASK_APP=application.py"
 
 ## The link for the uploaded app is 
-**[st19-09.herokuapp.com](st19-09.herokuapp.com)**
+**[st19-09.herokuapp.com](http://st19-09.herokuapp.com)**
 
 
 # How will this information be used?
