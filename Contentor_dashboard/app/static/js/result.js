@@ -85,7 +85,6 @@ $(function () {
     // let keywords = localStorage.getItem('keywords');
     // let keywords = $('#keywords').val();
     let keywords = "query=" + $('#keywords').val().replace(/[, ]+/g, "%20") + "&";
-    console.log(keywords);
     search(keywords);
 
     let item1 = document.getElementById('checkbox1');

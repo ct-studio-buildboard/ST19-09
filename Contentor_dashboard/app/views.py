@@ -1,29 +1,29 @@
 from flask import render_template, request, jsonify, redirect, url_for
 from flask_cors import CORS, cross_origin
 
-from app import app
-from app.models import predict
+import application
+from models import predict
 
 # cors = CORS(app)
 # app.config['CORS_HEADERS'] = "Content-Type"
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template("login.html")
 
-@app.route('/dashboard')
+@application.route('/dashboard')
 def dashboard():
     return render_template("dashboard.html")
 
-@app.route('/generate')
+@application.route('/generate')
 def generate():
     return render_template("generate.html")
 
-@app.route('/complete')
+@application.route('/complete')
 def complete():
 	return render_template("complete.html")
 
-@app.route('/test')
+@application.route('/test')
 def test_api():
 	return render_template("test.html")
 
@@ -35,7 +35,7 @@ def test_api():
 #     print(suggestion)
 #     return redirect(url_for('result', keywords=keywords, suggestion=suggestion), code=307)
 
-@app.route('/result', methods=['POST'])
+@application.route('/result', methods=['POST'])
 def test_inputs():
     keywords = request.form['keyword']
     print(keywords)

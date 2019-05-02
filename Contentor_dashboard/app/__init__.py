@@ -1,10 +1,10 @@
-from flask import Flask
+# from flask import Flask
 
-# Initialize the app
-app = Flask(__name__, instance_relative_config=True)
+# # Initialize the app
+# application = Flask(__name__, instance_relative_config=True)
 
-# Load the views
-from app import views
+# # Load the views
+# from app import views
 
-# Load the config file
-app.config.from_object('config')
+# # Load the config file
+# application.config.from_object('config')
